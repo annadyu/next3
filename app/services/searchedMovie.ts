@@ -1,5 +1,6 @@
-import { axiosInstance } from "./instance";
-import { ApiRoutes } from "./constants";
+// import { axiosInstance } from "./instance";
+// import { ApiRoutes } from "./constants";
+import axios from "axios";
 
 export interface Movie {
   id: number;
@@ -18,8 +19,8 @@ export interface MovieSearchResponse {
 }
 
 export const search = async (query: string) => {
-  const { data } = await axiosInstance.get<MovieSearchResponse>(
-    ApiRoutes.SEARCH_MOVIE,
+ const { data } = await axios.get<MovieSearchResponse>(
+    `https://api.themoviedb.org/3/search/movie`, 
     { params: { query, api_key: process.env.NEXT_PUBLIC_MOVIE_API_KEY } }
   );
   return data;
