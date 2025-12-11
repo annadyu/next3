@@ -1,18 +1,11 @@
 "use client";
 
-import { Card, Row, Col, Flex } from "antd";
+import { Card, Row, Col } from "antd";
 import truncate from "@/utils/truncate";
 import formatDate from "@/utils/formatDate";
+import { Movie } from "../services/interfaces";
 
 const { Meta } = Card;
-
-interface Movie {
-  id: number;
-  title: string;
-  overview: string;
-  release_date?: string;
-  poster_path?: string;
-}
 
 interface MovieListProps {
   movies: Movie[];
