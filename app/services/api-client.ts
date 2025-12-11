@@ -1,5 +1,5 @@
-import * as searchedMovies from './searchedMovie'
+// import * as searchedMovies from './searchedMovie'
 
-export const APi = {
+// export const APi = {
 
-}
+// }
