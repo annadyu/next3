@@ -7,7 +7,14 @@ import QueryPagination from "./components/query-pagination";
 import PaginationMovie from "./components/pagination";
 import MovieList from "./components/movie-list";
 
-export default async function MoviesPage({ searchParams }) {
+export default async function MoviesPage({
+  searchParams,
+}: {
+  searchParams?: {
+    query?: string;
+    page?: string;
+  };
+}) {
   const params = await searchParams;
 
   const query = params?.query || "";
