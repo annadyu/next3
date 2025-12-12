@@ -4,7 +4,7 @@ import Loading from "./loading";
 import Search from "./components/search";
 import NoResult from "./components/no-result";
 import QueryPagination from "./components/query-pagination";
-import PaginationMovie from "./components/pagination";
+import PaginationMovie from "./components/Pagination";
 import MovieList from "./components/movie-list";
 
 export default async function MoviesPage({

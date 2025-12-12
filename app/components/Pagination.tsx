@@ -36,36 +36,3 @@ export default function PaginationMovie({ totalPages }: PaginationInterfaces) {
     </div>
   );
 }
-
-// "use client";
-
-// import { Pagination } from "antd";
-// import { useRouter, useSearchParams } from "next/navigation";
-
-// interface Props {
-//   totalPages: number;
-// }
-
-// export default function PaginationMovie({ totalPages }: Props) {
-//   const router = useRouter();
-//   const searchParams = useSearchParams();
-//   const current = Number(searchParams.get("page")) || 1;
-
-//   const handleChange = (page: number) => {
-
-//     const params = new URLSearchParams(window.location.search);
-
-//     params.set("page", String(page));
-//     params.toString();
-//     router.push(`?${params.toString()}`);
-//   };
-
-//   return (
-//     <Pagination
-//       current={current}
-//       total={totalPages * 20}
-//       pageSize={20}
-//       onChange={handleChange}
-//     />
-//   );
-// }
