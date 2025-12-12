@@ -1,30 +1,32 @@
 import { fetchMovies } from "./fetch-api";
+import { Suspense } from "react";
+import Loading from "./loading";
 import Search from "./components/search";
-import PaginationMovie from "./components/Pagination";
-import MovieList from "./components/MovieList";
+import NoResult from "./components/no-result";
+import QueryPagination from "./components/query-pagination";
+import PaginationMovie from "./components/pagination";
+import MovieList from "./components/movie-list";
 
-export default async function MoviesPage({
-  searchParams,
-}: {
-  searchParams?: {
-    query?: string;
-    page?: string;
-  };
-}) {
-  const query = searchParams?.query || "";
-  const currentPage = Number(searchParams?.page) || 1;
+export default async function MoviesPage({ searchParams }) {
+  const params = await searchParams;
+
+  const query = params?.query || "";
+  const currentPage = Number(params?.page) || 1;
 
   const { data, totalPages } = await fetchMovies(query, currentPage);
 
   return (
     <div>
-      <Search />
-      <MovieList movies={data} />
-      <PaginationMovie totalPages={totalPages} />
+      <Search query={query} />
+      <Suspense fallback={<Loading />}>
+        <MovieList movies={data} />
+      </Suspense>
+      {!data.length && <NoResult />}
+      {!query && <PaginationMovie totalPages={totalPages} />}
+      {query && <QueryPagination />}
     </div>
   );
 }
-
 
 // import MovieList from "./components/MovieList";
 // import PaginationMovie from "./components/Pagination";
@@ -77,4 +79,3 @@ export default async function MoviesPage({
 //     </div>
 //   );
 // }
-

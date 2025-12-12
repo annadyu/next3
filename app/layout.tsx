@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
-import NoConnection from "./components/NoConnection";
+import NoConnection from "./components/no-connection";
 import "./globals.css";
 
 const geistSans = Geist({

@@ -1,8 +1,14 @@
 "use client";
 
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
+import { Pagination } from "antd";
 
-export default function PaginationMovie({ totalPages }: { totalPages: number }) {
+interface PaginationInterfaces {
+  totalPages: number;
+  // currentPage: number
+}
+
+export default function PaginationMovie({ totalPages }: PaginationInterfaces) {
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -20,22 +26,13 @@ export default function PaginationMovie({ totalPages }: { totalPages: number }) 
   };
 
   return (
-    <div>
-      <button
-        onClick={() => updatePage(currentPage - 1)}
-        disabled={currentPage <= 1}
-      >
-        Prev
-      </button>
-
-      <span>{currentPage}</span>
-
-      <button
-        onClick={() => updatePage(currentPage + 1)}
-        disabled={currentPage >= totalPages}
-      >
-        Next
-      </button>
+    <div className="flex justify-center mt-3">
+      <Pagination
+        current={currentPage}
+        total={totalPages * 20}
+        pageSize={20}
+        onChange={updatePage}
+      />
     </div>
   );
 }
@@ -72,4 +69,3 @@ export default function PaginationMovie({ totalPages }: { totalPages: number }) 
 //     />
 //   );
 // }
-
